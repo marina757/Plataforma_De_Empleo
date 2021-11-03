@@ -20,3 +20,6 @@ Route::get('/', function () {
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//RUTAS DE VACANTES
+Route::get('/vacantes', 'VacanteController@index')->name('vacantes.index');
