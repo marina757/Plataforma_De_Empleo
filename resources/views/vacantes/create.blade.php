@@ -24,6 +24,7 @@
                  name="titulo">
         </div>
 
+        {{$categorias}}
 
         <button
              type="submit"

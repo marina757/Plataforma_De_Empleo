@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Vacante;
+use App\Categoria;
 use Illuminate\Http\Request;
 
 class VacanteController extends Controller
@@ -29,7 +30,11 @@ class VacanteController extends Controller
      */
     public function create()
     {
-        return view('vacantes.create');
+        //CONSULTAS
+        $categorias = Categoria::all();
+        
+        return view('vacantes.create')
+                   ->with('categorias', $categorias);
     }
 
     /**
