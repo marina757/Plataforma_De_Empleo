@@ -45,7 +45,31 @@
                         </option>
                       @endforeach
                 </select>
+        </div>    
+        
+        <div class="mb-5">
+            <label
+                 for="experiencia"
+                 class="block text-gray-700 text-sm mb-2"
+                 >Experiencia:</label>
+
+                <select 
+                     id="experiencia"
+                     class="block appearance-none w-full
+                            border border-gray-200 text-gray-700 rounded leading-tight
+                            focus:outline-none focus:bg-white focus:border-gray-500 p-3
+                          bg-gray-100 w-full"
+                      name="experiencia">
+                      <option disabled selected>- Selecciona -</option>
+
+                      @foreach($experiencias as $experiencia)
+                        <option value="{{ $experiencia->id}}">
+                            {{ $experiencia->nombre}}
+                        </option>
+                      @endforeach
+                </select>
         </div>         
+
 
         <button
              type="submit"
