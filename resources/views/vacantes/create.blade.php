@@ -24,7 +24,28 @@
                  name="titulo">
         </div>
 
-        {{$categorias}}
+        <div class="mb-5">
+            <label
+                 for="categoria"
+                 class="block text-gray-700 text-sm mb-2"
+                 >Categoria:</label>
+
+                <select 
+                     id="categoria"
+                     class="block appearance-none w-full
+                            border border-gray-200 text-gray-700 rounded leading-tight
+                            focus:outline-none focus:bg-white focus:border-gray-500 p-3
+                          bg-gray-100 w-full"
+                      name="categoria">
+                      <option disabled selected>- Selecciona -</option>
+
+                      @foreach($categorias as $categoria)
+                        <option value="{{ $categoria->id}}">
+                            {{ $categoria->nombre}}
+                        </option>
+                      @endforeach
+                </select>
+        </div>         
 
         <button
              type="submit"
