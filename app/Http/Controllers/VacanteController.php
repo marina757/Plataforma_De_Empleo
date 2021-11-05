@@ -106,10 +106,10 @@ class VacanteController extends Controller
     //CAMPOS EXTRAS
     public function imagen(Request $request)
     {
-        // $imagen = $request->file('file');
-        // return $imagen->extension();
-
-        return "imagen subida";
+        $imagen = $request->file('file');
+        $nombreImagen = time() . '.' . $imagen->extension();
+        $imagen->move(public_path('storage/vacantes') , $nombreImagen);
+        return response()->json(['correcto' => $nombreImagen]);
 
     }
 }

@@ -142,10 +142,12 @@
                >Imagen Vacante:</label>
                
                <div id="dropzoneDevJobs" class="dropzone rounded bg-gray-100"></div>
+
+               <input type="hidden" name="imagen" id="imagen">
+
+               <p id="error"></p>
         </div>
-
-        <p id="error"></p>
-
+      
         <button
              type="submit"
              class="bg-teal-500 w-full hover:bg-teal-600 text-gray-100 font-bold p-3 focus:outline focus:shadow-outline uppercase"
@@ -191,11 +193,15 @@
              'X-CSRF-TOKEN': document.querySelector('meta[name=csrf-token]').content
        },
        success: function(file, response) {
-        //  console.log(response);
+          //console.log(response);
+          console.log(response.correcto);
          document.querySelector('#error').textContent = '';
+
+         //COLOCA LA RESPUESTA DEL SERVIDOR EN EL INPUT HIDDEN
+         document.querySelector('#imagen').value = response.correcto;
        },
        error: function(file, response) {
-        //  console.log(response);
+         // console.log(response);
         //  console.log(file);
          document.querySelector('#error').textContent = 'formato no valido';
        },
