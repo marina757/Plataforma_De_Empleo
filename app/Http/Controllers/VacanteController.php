@@ -101,4 +101,13 @@ class VacanteController extends Controller
     {
         //
     }
+
+
+    //CAMPOS EXTRAS
+    public function imagen(Request $request)
+    {
+        $imagen = $request->file('file');
+        return $imagen->extension();
+
+    }
 }
