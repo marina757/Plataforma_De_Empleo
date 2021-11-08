@@ -27,3 +27,5 @@ Route::get('/vacantes/create', 'VacanteController@create')->name('vacantes.creat
 
 //SUBIR IMAGENES
 Route::post('/vacantes/imagen', 'VacanteController@imagen')->name('vacantes.imagen');
+Route::post('/vacantes/borrarimagen', 'VacanteController@borrarimagen')->name('vacantes.borrar');
+
