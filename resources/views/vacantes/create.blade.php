@@ -134,9 +134,10 @@
                <div class="editable p-3 bg-gray-100 rounded form-input w-full text-gray-700"></div>
 
                <input type="hidden" name="descripcion" id="descripcion">
-        </div>     
+        </div>  
         
-        <label
+        <div class="mb-5">
+          <label
                for="descripcion"
                class="block text-gray-700 text-sm mb-2"
                >Imagen Vacante:</label>
@@ -147,6 +148,25 @@
 
                <p id="error"></p>
         </div>
+
+       <div class="mb-5">
+          <label
+              for="skills"
+              class="block text-gray-700 text-sm mb-2"
+              >Habilidades y Conocimientos:</label>
+              @php
+                 $skills = ['HTML5', 'CSS3', 'CSSGrid', 'Flexbox', 'JavaScript',
+                  'jQuery', 'Node', 'Angular', 'VueJS', 'ReactJS', 'React Hooks',
+                  'Redux', 'Apollo', 'GraphQL', 'TypeScript', 'PHP', 'Laravel', 
+                  'Symfony', 'Python', 'Django', 'ORM', 'Sequelize', 'Mongoose',
+                  'SQL', 'MVC', 'SASS', 'WordPress', 'Express', 'Deno', 
+                  'React Native', 'Flutter', 'MobX', 'C#', 'Ruby on Rails']
+              @endphp
+
+            <lista-skills
+               :skills="{{ json_encode($skills) }}"
+            ></lista-skills>      
+       </div>
       
         <button
              type="submit"
