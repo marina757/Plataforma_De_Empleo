@@ -1908,6 +1908,22 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+//
+//
+//
+//
 //
 //
 //
@@ -1924,6 +1940,31 @@ __webpack_require__.r(__webpack_exports__);
   props: ['skills'],
   mounted: function mounted() {
     console.log(this.skills);
+  },
+  data: function data() {
+    return {
+      habilidades: new Set()
+    };
+  },
+  methods: {
+    activar: function activar(e) {
+      if (e.target.classList.contains('bg-teal-400')) {
+        //skill esta en activo
+        e.target.classList.remove('bg-teal-400'); //eliminar del set de habilidades
+
+        this.habilidades["delete"](e.target.textContent);
+      } else {
+        //no est activo anadirlo
+        e.target.classList.add('bg-teal-400'); //agregar al set de habilidades
+
+        this.habilidades.add(e.target.textContent);
+      } //agregar habilidades al input hidden
+
+
+      var stringHabilidades = _toConsumableArray(this.habilidades);
+
+      document.querySelector('#skills').value = stringHabilidades;
+    }
   }
 });
 
@@ -37515,21 +37556,30 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "ul",
-    { staticClass: "flex flex-wrap justify-center" },
-    _vm._l(this.skills, function (skill, i) {
-      return _c(
-        "li",
-        {
-          key: i,
-          staticClass: "border border-gray-500 px-10 py-3 mb-3 rounded mr-4",
-        },
-        [_vm._v(" " + _vm._s(skill) + " ")]
-      )
-    }),
-    0
-  )
+  return _c("div", [
+    _c(
+      "ul",
+      { staticClass: "flex flex-wrap justify-center" },
+      _vm._l(this.skills, function (skill, i) {
+        return _c(
+          "li",
+          {
+            key: i,
+            staticClass: "border border-gray-500 px-10 py-3 mb-3 rounded mr-4",
+            on: {
+              click: function ($event) {
+                return _vm.activar($event)
+              },
+            },
+          },
+          [_vm._v(_vm._s(skill))]
+        )
+      }),
+      0
+    ),
+    _vm._v(" "),
+    _c("input", { attrs: { type: "hidden", name: "skills", id: "skills" } }),
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
