@@ -46,7 +46,6 @@
                    <strong class="font-bold">Error!</strong>
                    <span class="block">{{$message}}</span>
                  </div>
-                   
                  @enderror
         </div>
 
@@ -66,11 +65,20 @@
                       <option disabled selected>- Selecciona -</option>
 
                       @foreach($categorias as $categoria)
-                        <option value="{{ $categoria->id}}">
+                        <option
+                           {{ old('categoria') == $categoria->id ? 'selected' : ''}}
+                           value="{{ $categoria->id}}">
                             {{ $categoria->nombre}}
                         </option>
                       @endforeach
                 </select>
+
+                @error('categoria')
+                 <div class="bg-red-100 border birder-red-400 text-red-700 px-4 py-3 rounded relative mt-3 mb-6" role="alert">
+                   <strong class="font-bold">Error!</strong>
+                   <span class="block">{{$message}}</span>
+                 </div>
+                @enderror
         </div>    
         
         <div class="mb-5">
@@ -89,11 +97,20 @@
                       <option disabled selected>- Selecciona -</option>
 
                       @foreach($experiencias as $experiencia)
-                        <option value="{{ $experiencia->id}}">
+                        <option
+                            {{ old('experiencia') == $experiencia->id ? 'selected' : ''}}
+                            value="{{ $experiencia->id}}">
                             {{ $experiencia->nombre}}
                         </option>
                       @endforeach
                 </select>
+
+                @error('experiencia')
+                 <div class="bg-red-100 border birder-red-400 text-red-700 px-4 py-3 rounded relative mt-3 mb-6" role="alert">
+                   <strong class="font-bold">Error!</strong>
+                   <span class="block">{{$message}}</span>
+                 </div>
+                 @enderror
         </div>    
         
         <div class="mb-5">
@@ -112,11 +129,20 @@
                     <option disabled selected>- Selecciona -</option>
 
                     @foreach($ubicaciones as $ubicacion)
-                      <option value="{{ $ubicacion->id}}">
+                      <option
+                         {{ old('ubicacion') == $ubicacion->id ? 'selected' : ''}}  
+                         value="{{ $ubicacion->id}}">
                           {{ $ubicacion->nombre}}
                       </option>
                     @endforeach
               </select>
+
+              @error('ubicacion')
+              <div class="bg-red-100 border birder-red-400 text-red-700 px-4 py-3 rounded relative mt-3 mb-6" role="alert">
+                <strong class="font-bold">Error!</strong>
+                <span class="block">{{$message}}</span>
+              </div>
+              @enderror
         </div> 
         
         <div class="mb-5">
@@ -135,11 +161,20 @@
                     <option disabled selected>- Selecciona -</option>
 
                     @foreach($salarios as $salario)
-                      <option value="{{ $salario->id}}">
+                      <option
+                          {{ old('salario') == $salario->id ? 'selected' : ''}}
+                          value="{{ $salario->id}}">
                           {{ $salario->nombre}}
                       </option>
                     @endforeach
               </select>
+
+              @error('salario')
+              <div class="bg-red-100 border birder-red-400 text-red-700 px-4 py-3 rounded relative mt-3 mb-6" role="alert">
+                <strong class="font-bold">Error!</strong>
+                <span class="block">{{$message}}</span>
+              </div>
+              @enderror
         </div>        
 
         <div class="mb-5">
