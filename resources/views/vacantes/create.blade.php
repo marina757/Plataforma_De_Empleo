@@ -185,7 +185,13 @@
                
                <div class="editable p-3 bg-gray-100 rounded form-input w-full text-gray-700"></div>
 
-               <input type="hidden" name="descripcion" id="descripcion">
+               <input type="hidden" name="descripcion" id="descripcion" value="{{ old('descripcion') }}">
+               @error('descripcion')
+                  <div class="bg-red-100 border birder-red-400 text-red-700 px-4 py-3 rounded relative mt-3 mb-6" role="alert">
+                  <strong class="font-bold">Error!</strong>
+                   <span class="block">{{$message}}</span>
+                  </div>
+               @enderror
         </div>  
         
         <div class="mb-5">
@@ -197,6 +203,7 @@
                <div id="dropzoneDevJobs" class="dropzone rounded bg-gray-100"></div>
 
                <input type="hidden" name="imagen" id="imagen">
+             
 
                <p id="error"></p>
         </div>
@@ -240,7 +247,7 @@
     //MEDIUM EDITOR 
     const editor = new MediumEditor('.editable', {
         toolbar : {
-          buttons: ['bold', 'italic', 'underline', 'quote', 'anchor', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', 'orderedList', 'unorderedList', 'h2', 'h3'],
+          buttons: ['bold', 'italic', 'underline', 'quote', 'anchor', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', 'orderedlist', 'unorderedlist', 'h2', 'h3'],
           static: true,
           sticky: true
         },
@@ -249,10 +256,14 @@
         }
     });
 
+    //AGREGA AL INPUT HIDDEN LO QUE USUARIO ESCRIBE EN MEDIUM EDITOR
     editor.subscribe('editableInput', function(eventObj, editable) {
       const contenido = editor.getContent();
       document.querySelector('#descripcion').value = contenido;
     })
+
+    //LLENA EL EDITOR CON EL CONTENIDO DEL INPUT HIDDEN
+    editor.setContent( document.querySelector('#descripcion').value );
     //DROPZONE
     const dropzoneDevJobs = new Dropzone('#dropzoneDevJobs', {
        url: "/vacantes/imagen",
