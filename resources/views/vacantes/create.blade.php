@@ -208,7 +208,7 @@
                   <strong class="font-bold">Error!</strong>
                   <span class="block">{{$message}}</span>
                </div>
-              @enderror
+               @enderror
              
 
                <p id="error"></p>
@@ -217,8 +217,8 @@
        <div class="mb-5">
           <label
               for="skills"
-              class="block text-gray-700 text-sm mb-2"
-              >Habilidades y Conocimientos:</label>
+              class="block text-gray-700 text-sm mb-5"
+              >Habilidades y Conocimientos: <span class="text-xs">( Elige al menos 3)</span></label>
               @php
                  $skills = ['HTML5', 'CSS3', 'CSSGrid', 'Flexbox', 'JavaScript',
                   'jQuery', 'Node', 'Angular', 'VueJS', 'ReactJS', 'React Hooks',
@@ -230,7 +230,15 @@
 
             <lista-skills
                :skills="{{ json_encode($skills) }}"
-            ></lista-skills>      
+               :oldskills="{{ json_encode( old('skills'))}}"
+            ></lista-skills>  
+            
+               @error('skills')
+                  <div class="bg-red-100 border birder-red-400 text-red-700 px-4 py-3 rounded relative mt-3 mb-6" role="alert">
+                  <strong class="font-bold">Error!</strong>
+                   <span class="block">{{$message}}</span>
+                  </div>
+               @enderror
        </div>
       
         <button
