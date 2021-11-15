@@ -16,4 +16,22 @@ class Vacante extends Model
     {
         return $this->belongsTo(Categoria::class);
     }
+
+     //RELACION 1:1 SALARIO Y VACANTE
+     public function salario()
+     {
+         return $this->belongsTo(Salario::class);
+     }
+
+      //RELACION 1:1 UBICACION Y VACANTE
+    public function ubicacion()
+    {
+        return $this->belongsTo(Ubicacion::class);
+    }
+
+     //RELACION 1:1 EXPERIENCIA Y VACANTE
+     public function experiencia()
+     {
+         return $this->belongsTo(Experiencia::class);
+     }
 }
