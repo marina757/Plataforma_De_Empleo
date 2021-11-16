@@ -40,9 +40,19 @@ class CandidatoController extends Controller
         $data = $request->validate([
             'nombre' => 'required',
             'email' => 'required|email',
-            //'cv' => 'required|mimes:pdf|max:1000',
+            'cv' => 'required|mimes:pdf|max:1000',
             'vacante_id' => 'required'
         ]);
+
+        //ALMACENAR ARCHIVO PDF
+        if($request->file('cv'))
+        {
+            $archivo = $request->file('cv');
+            $nombreArchivo = time() . "." . $request->file('cv')->extension();
+            $ubicacion = public_path('/storage/cv');
+            $archivo->move($ubicacion, $nombreArchivo);
+
+        }
 
 
         //PRIMERA FORMA
@@ -67,13 +77,13 @@ class CandidatoController extends Controller
         $vacante->candidatos()->create([
             'nombre' => $data['nombre'],
             'email' => $data['email'],
-            'cv' => '123.pdf'
+            'cv' =>  $nombreArchivo
         ]);
 
 
         // $candidato->save();
 
-        return "desde store";
+        return back();
     }
 
     /**
