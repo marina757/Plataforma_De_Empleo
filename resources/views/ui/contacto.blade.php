@@ -1,12 +1,13 @@
 <aside class="md:w-2/5 bg-teal-500 p-5 rounded m-3">
     <h2 class="text-2xl my-5 text-white uppercase font-bold text-center">Contacta al Reclutador</h2>
 
-    <form>
+    <form action="{{route('candidatos.store')}}" method="POST">
+        @csrf
         <div class="mb-4">
             <label for="nombre" class="block text-white text-sm font-bold mb-4">
-                Nombre: 
+                Nombre:
             </label>
-            <input 
+            <input
                 id="nombre"
                 type="text"
                 class="p-3 bg-gray-100 rounded form-input w-full @error('nombre') border border-red-500 @enderror"
@@ -25,9 +26,9 @@
 
         <div class="mb-4">
             <label for="email" class="block text-white text-sm font-bold mb-4">
-                Email: 
+                Email:
             </label>
-            <input 
+            <input
                 id="email"
                 type="email"
                 class="p-3 bg-gray-100 rounded form-input w-full @error('email') border border-red-500 @enderror"
@@ -46,9 +47,9 @@
 
         <div class="mb-4">
             <label for="cv" class="block text-white text-sm font-bold mb-4">
-                Curriculum (PDF): 
+                Curriculum (PDF):
             </label>
-            <input 
+            <input
                 id="cv"
                 type="file"
                 class="p-3 rounded form-input w-full @error('cv') border border-red-500 @enderror"
@@ -66,7 +67,7 @@
 
         <input type="hidden" name="vacante_id" value="{{$vacante->id}}">
 
-        <input 
+        <input
             type="submit"
             class="bg-teal-600 w-full hover:bg-teal-700 text-gray-100 p-3 focus:outline-none focus:shadow-outline uppercase"
             value="Contactar">
