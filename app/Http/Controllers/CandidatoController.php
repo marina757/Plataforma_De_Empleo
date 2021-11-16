@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Vacante;
 use App\Candidato;
 use Illuminate\Http\Request;
+use App\Notifications\NuevoCandidato;
 
 class CandidatoController extends Controller
 {
@@ -79,6 +80,9 @@ class CandidatoController extends Controller
             'email' => $data['email'],
             'cv' =>  $nombreArchivo
         ]);
+
+        $reclutador = $vacante->reclutador;
+        $reclutador->notify( new NuevoCandidato() );
 
 
         // $candidato->save();
