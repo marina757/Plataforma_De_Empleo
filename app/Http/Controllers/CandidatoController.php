@@ -83,7 +83,7 @@ class CandidatoController extends Controller
 
         // $candidato->save();
 
-        return back();
+        return back()->with('estado', 'Tus datos se enviaron correctamente');
     }
 
     /**
