@@ -14,7 +14,7 @@ class VacanteController extends Controller
 {
     // public function __construct()
     // {
-    //     //REVISAR QUE USUARIO ESTEA AUTENTICADO Y VERIFICADO 
+    //     //REVISAR QUE USUARIO ESTEA AUTENTICADO Y VERIFICADO
     //     $this->middleware(['auth', 'verified']);
     // }
     /**
@@ -40,7 +40,7 @@ class VacanteController extends Controller
         $experiencias = Experiencia::all();
         $ubicaciones = Ubicacion::all();
         $salarios = Salario::all();
-        
+
         return view('vacantes.create')
                    ->with('categorias', $categorias)
                    ->with('experiencias', $experiencias)
@@ -66,10 +66,10 @@ class VacanteController extends Controller
             'descripcion' => 'required|min:50',
             'imagen' => 'required',
             'skills' => 'required',
-           
+
         ]);
 
-        //ALMACENAR EN BASE DE DATOS 
+        //ALMACENAR EN BASE DE DATOS
         auth()->user()->vacantes()->create([
             'titulo' => $data['titulo'],
             'imagen' => $data['imagen'],
@@ -91,7 +91,7 @@ class VacanteController extends Controller
      */
     public function show(Vacante $vacante)
     {
-        return view('vacantes.show')->with('vacante', $vacante);    
+        return view('vacantes.show')->with('vacante', $vacante);
     }
 
     /**
@@ -150,5 +150,18 @@ class VacanteController extends Controller
 
             return response('imagen eliminada', 200);
         }
+    }
+
+    //CAMBIA EL ESTADO DE UNA VACANTE
+    public function estado(Request $request, Vacante $vacante)
+    {
+
+        //LEER NUEVO ESTADO Y ASIGNARLO
+        $vacante->activa = $request->estado;
+
+        //GUARDARLO EN BD
+        $vacante->save();
+
+        return response()->json('correcto');
     }
 }

@@ -1940,6 +1940,15 @@ __webpack_require__.r(__webpack_exports__);
         this.estadoVacanteData = 1;
       } //ENVIAR A AXIOS
 
+
+      var params = {
+        estado: this.estadoVacanteData
+      };
+      axios.post('/vacantes/' + this.vacanteId, params).then(function (respuesta) {
+        return console.log(respuesta);
+      })["catch"](function (error) {
+        return console.log(error);
+      });
     }
   },
   computed: {

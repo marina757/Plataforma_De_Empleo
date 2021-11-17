@@ -32,6 +32,14 @@ export default {
             }
 
             //ENVIAR A AXIOS
+            const params = {
+                estado: this.estadoVacanteData
+            }
+            axios
+                .post('/vacantes/' + this.vacanteId, params)
+                .then(respuesta => console.log(respuesta))
+                .catch(error => console.log(error))
+
         }
     },
     computed: {
