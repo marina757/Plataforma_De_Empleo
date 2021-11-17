@@ -37,6 +37,7 @@ Route::group(['middleware' => ['auth', 'verified']], function() {
 });
 
 //ENVIAR DATOS PARA UNA VACANTE
+Route::get('/candidatos/{id}', 'CandidatoController@index')->name('candidatos.index');
 Route::post('/candidatos/store', 'CandidatoController@store')->name('candidatos.store');
 
 //MUESTRA TRABAJOS EN FRONTEND SIN AUTENTICACION

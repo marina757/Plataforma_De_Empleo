@@ -32,7 +32,7 @@
           </thead>
           <tbody class="bg-white">
 
-       
+
             @foreach ($vacantes as $vacante)
             <tr>
               <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
@@ -52,10 +52,10 @@
                 </span>
               </td>
               <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
-                  <a 
-                      href="" 
+                  <a
+                      href="{{ route('candidatos.index', ['id' => $vacante->id])}}"
                       class="text-gray-500 hover:text-gray-600"
-                  >   Candidatos</a>
+                  >{{ $vacante->candidatos->count() }}   Candidatos</a>
               </td>
               <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 font-medium">
                     <a href="#" class="text-teal-600 hover:text-teal-900 mr-5">Editar</a>
@@ -64,7 +64,7 @@
               </td>
             </tr>
             @endforeach
-           
+
           </tbody>
         </table>
       </div>
