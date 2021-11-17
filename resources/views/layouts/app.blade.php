@@ -52,7 +52,7 @@
                             @else
                             <span class="text-gray-300 text-sm pr-4"> {{ Auth::user()->name }}</span>
 
-                            <a href="" class="bg-teal-500 rounded-full mr-2 px-3 py-1 font-bold text-sm text-white"> {{Auth::user()->unreadNotifications->count() }}</a>
+                            <a href="{{ route('notificaciones')}}" class="bg-teal-500 rounded-full mr-2 px-3 py-1 font-bold text-sm text-white"> {{Auth::user()->unreadNotifications->count() }}</a>
                                     <a class="no-underline hover:underline text-gray-300 text-sm p-3" href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">

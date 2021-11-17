@@ -31,6 +31,9 @@ Route::group(['middleware' => ['auth', 'verified']], function() {
     //SUBIR IMAGENES
     Route::post('/vacantes/imagen', 'VacanteController@imagen')->name('vacantes.imagen');
     Route::post('/vacantes/borrarimagen', 'VacanteController@borrarimagen')->name('vacantes.borrar');
+
+    //NOTIFICACIONES
+    Route::get('/notificaciones', 'NotificacionesController')->name('notificaciones');
 });
 
 //ENVIAR DATOS PARA UNA VACANTE
