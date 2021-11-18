@@ -102,6 +102,8 @@ class VacanteController extends Controller
      */
     public function edit(Vacante $vacante)
     {
+
+        $this->authorize('view', $vacante);
       //CONSULTAS
       $categorias = Categoria::all();
       $experiencias = Experiencia::all();
@@ -125,6 +127,7 @@ class VacanteController extends Controller
      */
     public function update(Request $request, Vacante $vacante)
     {
+        $this->authorize('update', $vacante);
         // dd($request->all());
          //VALIDACION
          $data = $request->validate([
@@ -161,6 +164,7 @@ class VacanteController extends Controller
      */
     public function destroy(Vacante $vacante)
     {
+        $this->authorize('delete', $vacante);
         //return response()->json($vacante);
         //return response()->json($request);
 
