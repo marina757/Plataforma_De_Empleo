@@ -23,14 +23,29 @@ export default {
                 cancelButtonText: 'No'
                 }).then((result) => {
                 if (result.value) {
+                    const params = {
+                        id: this.vacanteId,
+                        _method: 'delete'
+                    }
 
                     //ENVIAR PETICION A AXIOS
+                    axios.post(`/vacantes/${this.vacanteId}`, params)
+                        .then(respuesta => {
+                            // console.log(respuesta)
 
-                    this.$swal.fire(
-                    'Vacante eliminada',
-                    'Se elimino correctamente',
-                    'success'
-                    )
+                            this.$swal.fire(
+                            'Vacante eliminada',
+                            respuesta.data.mensaje,
+                            'success'
+                            );
+
+                            //ELIMINAR DEL DOM
+                            this.$el.parentNode.parentNode.parentNode.removeChild(this.$el.parentNode.parentNode);
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        })
+
                 }
                 })
         }

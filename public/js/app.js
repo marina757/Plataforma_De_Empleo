@@ -1933,8 +1933,20 @@ __webpack_require__.r(__webpack_exports__);
         cancelButtonText: 'No'
       }).then(function (result) {
         if (result.value) {
-          //ENVIAR PETICION A AXIOS
-          _this.$swal.fire('Vacante eliminada', 'Se elimino correctamente', 'success');
+          var params = {
+            id: _this.vacanteId,
+            _method: 'delete'
+          }; //ENVIAR PETICION A AXIOS
+
+          axios.post("/vacantes/".concat(_this.vacanteId), params).then(function (respuesta) {
+            // console.log(respuesta)
+            _this.$swal.fire('Vacante eliminada', respuesta.data.mensaje, 'success'); //ELIMINAR DEL DOM
+
+
+            _this.$el.parentNode.parentNode.parentNode.removeChild(_this.$el.parentNode.parentNode);
+          })["catch"](function (error) {
+            console.log(error);
+          });
         }
       });
     }
