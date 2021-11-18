@@ -162,6 +162,6 @@ class VacanteController extends Controller
         //GUARDARLO EN BD
         $vacante->save();
 
-        return response()->json('correcto');
+        return response()->json(['respuesta' => 'Correcto']);
     }
 }
