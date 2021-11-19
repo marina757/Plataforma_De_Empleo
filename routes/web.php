@@ -41,6 +41,8 @@ Route::group(['middleware' => ['auth', 'verified']], function() {
 //PAGINA DE INICIO
 Route::get('/', 'InicioController')->name('inicio');
 
+//CATEGORIAS
+Route::get('/categorias/{categoria}', 'CategoriaController@show')->name('categorias.show');
 //ENVIAR DATOS PARA UNA VACANTE
 Route::get('/candidatos/{id}', 'CandidatoController@index')->name('candidatos.index');
 Route::post('/candidatos/store', 'CandidatoController@store')->name('candidatos.store');
