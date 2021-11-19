@@ -21,4 +21,20 @@
         </div>
     </div>
 
+    <div class="my-10 bg-gray-100 p-10 shadow">
+        <h1 class="text-3xl text-gray-700 m-0">
+            Nuevas
+            <span class="font-bold">Vacantes</span>
+        </h1>
+
+        <ul class="mt-10 grid-cols-1 md:grid-cols-2 gap-8">
+            @foreach($vacantes as $vacante)
+            <li>
+                {{ $vacante->titulo }}
+            </li>
+
+            @endforeach
+        </ul>
+    </div>
+
 @endsection

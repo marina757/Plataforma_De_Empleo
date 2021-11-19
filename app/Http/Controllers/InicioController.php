@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Vacante;
 use Illuminate\Http\Request;
 
 class InicioController extends Controller
@@ -15,6 +16,8 @@ class InicioController extends Controller
     public function __invoke(Request $request)
     {
         //
-        return view('inicio.index');
+        $vacantes = Vacante::latest()->where('activa', true)->take(10)->get();
+        // dd($vacantes);
+        return view('inicio.index', compact('vacantes'));
     }
 }
