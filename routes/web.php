@@ -48,7 +48,11 @@ Route::get('/candidatos/{id}', 'CandidatoController@index')->name('candidatos.in
 Route::post('/candidatos/store', 'CandidatoController@store')->name('candidatos.store');
 
 //MUESTRA TRABAJOS EN FRONTEND SIN AUTENTICACION
+Route::get('/busqueda/buscar', 'VacanteController@resultados')->name('vacantes.resultados');
+Route::post('/busqueda/buscar', 'VacanteController@buscar')->name('vacantes.buscar');
 Route::get('vacantes/{vacante}', 'VacanteController@show')->name('vacantes.show');
+
+
 
 
 

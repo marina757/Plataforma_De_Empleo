@@ -1,6 +1,10 @@
 <h2 class="my-10 text-2xl text-gray-700">Busca una vacante</h2>
 
-<form>
+<form
+    action="{{ route('vacantes.buscar')}}"
+    method="POST"
+    >
+    @csrf
     <div class="mb-5">
         <label
              for="categoria"
