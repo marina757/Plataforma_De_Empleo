@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Vacante;
+use App\Ubicacion;
 use Illuminate\Http\Request;
 
 class InicioController extends Controller
@@ -17,7 +18,8 @@ class InicioController extends Controller
     {
         //
         $vacantes = Vacante::latest()->where('activa', true)->take(10)->get();
+        $ubicaciones = Ubicacion::all();
         // dd($vacantes);
-        return view('inicio.index', compact('vacantes'));
+        return view('inicio.index', compact('vacantes', 'ubicaciones'));
     }
 }
